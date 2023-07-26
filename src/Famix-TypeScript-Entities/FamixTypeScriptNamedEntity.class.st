@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Class {
 	#name : #FamixTypeScriptNamedEntity,
 	#superclass : #FamixTypeScriptSourcedEntity,
@@ -47,3 +48,29 @@ FamixTypeScriptNamedEntity >> decorators: anObject [
 	<generated>
 	decorators value: anObject
 ]
+=======
+Class {
+	#name : #FamixTypeScriptNamedEntity,
+	#superclass : #FamixTypeScriptEntity,
+	#traits : 'FamixTInvocationsReceiver + FamixTNamedEntity',
+	#classTraits : 'FamixTInvocationsReceiver classTrait + FamixTNamedEntity classTrait',
+	#category : #'Famix-TypeScript-Entities-Entities'
+}
+
+{ #category : #meta }
+FamixTypeScriptNamedEntity class >> annotation [
+
+	<FMClass: #NamedEntity super: #FamixTypeScriptEntity>
+	<package: #FamixTypeScript>
+	<generated>
+	<abstract>
+	^ self
+]
+
+{ #category : #testing }
+FamixTypeScriptNamedEntity class >> isAbstract [
+
+	<generated>
+	^ self == FamixTypeScriptNamedEntity
+]
+>>>>>>> 18064a2a427747ae15d0e2c534ec4cdd1e6955f6
