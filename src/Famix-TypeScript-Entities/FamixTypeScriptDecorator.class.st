@@ -4,11 +4,9 @@ I represent a TypeScript Decorator
 Class {
 	#name : #FamixTypeScriptDecorator,
 	#superclass : #FamixTypeScriptNamedEntity,
-	#traits : 'FamixTNamedEntity',
-	#classTraits : 'FamixTNamedEntity classTrait',
 	#instVars : [
-		'#function => FMOne type: #FamixTypeScriptFunction opposite: #decorator',
-		'#namedEntity => FMOne type: #FamixTypeScriptNamedEntity opposite: #decorator'
+		'#expression => FMProperty',
+		'#namedEntity => FMOne type: #FamixTypeScriptNamedEntity opposite: #decorators'
 	],
 	#category : #'Famix-TypeScript-Entities-Entities'
 }
@@ -23,23 +21,23 @@ FamixTypeScriptDecorator class >> annotation [
 ]
 
 { #category : #accessing }
-FamixTypeScriptDecorator >> function [
-	"Relation named: #function type: #FamixTypeScriptFunction opposite: #decorator"
+FamixTypeScriptDecorator >> expression [
 
+	<FMProperty: #expression type: #String>
 	<generated>
-	^ function
+	<FMComment: 'Decorators use the form @expression, where expression must evaluate to a function that will be called at runtime with information about the decorated declaration'>
+	^ expression
 ]
 
 { #category : #accessing }
-FamixTypeScriptDecorator >> function: anObject [
-
+FamixTypeScriptDecorator >> expression: anObject [
 	<generated>
-	function := anObject
+	expression := anObject
 ]
 
 { #category : #accessing }
 FamixTypeScriptDecorator >> namedEntity [
-	"Relation named: #namedEntity type: #FamixTypeScriptNamedEntity opposite: #decorator"
+	"Relation named: #namedEntity type: #FamixTypeScriptNamedEntity opposite: #decorators"
 
 	<generated>
 	^ namedEntity

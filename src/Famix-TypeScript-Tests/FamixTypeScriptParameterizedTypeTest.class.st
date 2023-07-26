@@ -8,56 +8,38 @@ Class {
 }
 
 { #category : #tests }
-FamixTypeScriptParameterizedTypeTest >> setUp [
-	| package class1 class2 type1 type2 type3 paramType1 paramType2 paramType3 parameterizedType1 |
+FamixTypeScriptParameterizedTypeTest >> setUp [	
 	super setUp.
 	model := FamixTypeScriptModel new.
-	
-	package:= FamixTypeScriptPackage named: 'PackageA' model: model.
-	class1:= FamixTypeScriptClass  named: 'ClassA' model: model.
-	class2:= FamixTypeScriptParameterizableClass named: 'ParameterizableClassA' model: model.
-
-	paramType1:= FamixTypeScriptParameterType named:  'A' model: model.
-	paramType2:= FamixTypeScriptParameterType named:  'B' model: model.
-	paramType3:= FamixTypeScriptParameterType named:  'C' model: model.
-	paramType1 typeContainer: class2.
-	paramType2 typeContainer: class2.
-	paramType3 typeContainer: class2.
-	type1:= FamixTypeScriptType named: 'TypeB' model: model.
-	type2:= FamixTypeScriptType named: 'TypeC' model: model.
-	parameterizedType1:= FamixTypeScriptParameterizedType new.
-	parameterizedType1 addArgument: type1.
-	class2 typeContainer: paramType1.
-	
-	"model"
-		"importFromMSEStream:
+		
+	model
+		importFromMSEStream:
 			'(
-		(Famix-TypeScript-Entities.Package (id: 1) (name ''PackageA''))
-		(Famix-TypeScript-Entities.Class (id: 2) (name ''ClassA''))
+		(FamixTypeScript.Class (id: 2) (name ''ClassA''))
 		
-		(Famix-TypeScript-Entities.ParameterizableClass (id: 3) (name ''ParameterizableClassA''))
-		(Famix-TypeScript-Entities.ParameterType (id: 5) (name ''A'') (typeContainer (ref: 3)))
-		(Famix-TypeScript-Entities.ParameterType (id: 6) (name ''B'') (typeContainer (ref: 3)))
-		(Famix-TypeScript-Entities.ParameterType (id: 7) (name ''C'') (typeContainer (ref: 3)))
+		(FamixTypeScript.ParameterizableClass (id: 3) (name ''ParameterizableClassA''))
+		(FamixTypeScript.ParameterType (id: 4) (name ''A'') (typeContainer (ref: 3)))
+		(FamixTypeScript.ParameterType (id: 5) (name ''B'') (typeContainer (ref: 3)))
+		(FamixTypeScript.ParameterType (id: 6) (name ''C'') (typeContainer (ref: 3)))
 		
-		(Famix-TypeScript-Entities.Type (id: 4) (name ''TypeB''))
-		(Famix-TypeScript-Entities.Type (id: 5) (name ''TypeC''))		
+		(FamixTypeScript.Type (id: 7) (name ''TypeB''))
+		(FamixTypeScript.Type (id: 8) (name ''TypeC''))		
 				
-		(Famix-TypeScript-Entities.ParameterizedType (id: 6) (parameterizableClass (ref: 3)) (arguments (ref: 4)))
-		(Famix-TypeScript-Entities.ParameterizedType (id: 7) (parameterizableClass (ref: 3)) (arguments (ref: 4) (ref: 5)))
-		
-		(Famix-TypeScript-Entities.Attribute (id: 8) (name ''attributeA1'') (parentType (ref: 2)) (declaredType (ref: 6)))
-		(Famix-TypeScript-Entities.Attribute (id: 9) (name ''attributeA2'') (parentType (ref: 2)) (declaredType (ref: 7)))
+		(FamixTypeScript.ParameterizedType (id: 9) (name ''ParameterizableClassA<TypeB>'') (parameterizableClass (ref: 3)) (arguments (ref: 7)))
+		(FamixTypeScript.ParameterizedType (id: 10) (name ''ParameterizableClassA<TypeB,TypeC>'') (parameterizableClass (ref: 3)) (arguments (ref: 7) (ref: 8)))
 
-		(Famix-TypeScript-Entities.Method (id: 10) (name ''methodA1'') (parentType (ref: 2)) (declaredType (ref: 6)))
-		(Famix-TypeScript-Entities.Method (id: 11) (name ''methodA2'') (parentType (ref: 2)) (declaredType (ref: 7)))
+		(FamixTypeScript.Field (id: 11) (name ''fieldA1'') (parentType (ref: 2)) (declaredType (ref: 9)))
+		(FamixTypeScript.Field (id: 12) (name ''fieldA2'') (parentType (ref: 2)) (declaredType (ref: 10)))
+				
+		(FamixTypeScript.Method (id: 13) (name ''methodA1'') (parentType (ref: 2)) (declaredType (ref: 9)))
+		(FamixTypeScript.Method (id: 14) (name ''methodA2'') (parentType (ref: 2)) (declaredType (ref: 10)))
 		
-		(Famix-TypeScript-Entities.Parameter (id: 12) (name ''parameterMtdA1'') (parentBehaviouralEntity (ref: 10)) (declaredType (ref: 6)))
-		(Famix-TypeScript-Entities.Parameter (id: 13) (name ''parameterMtdA2'') (parentBehaviouralEntity (ref: 11)) (declaredType (ref: 7)))
+		(FamixTypeScript.Parameter (id: 15) (name ''parameterMtdA1'') (parentBehaviouralEntity (ref: 13)) (declaredType (ref: 9)))
+		(FamixTypeScript.Parameter (id: 16) (name ''parameterMtdA2'') (parentBehaviouralEntity (ref: 14)) (declaredType (ref: 10)))
 		
-		(Famix-TypeScript-Entities.LocalVariable (id: 14) (name ''localVariableMtdA1'') (parentBehaviouralEntity (ref: 10)) (declaredType (ref: 6)))
-		(Famix-TypeScript-Entities.LocalVariable (id: 15) (name ''localVariableMtdA2'') (parentBehaviouralEntity (ref: 11)) (declaredType (ref: 7)))
-	)' readStream"
+		(FamixTypeScript.Variable (id: 17) (name ''variableMtdA1'') (parentBehaviouralEntity (ref: 13)) (declaredType (ref: 9)))
+		(FamixTypeScript.Variable (id: 18) (name ''variableMtdA2'') (parentBehaviouralEntity (ref: 14)) (declaredType (ref: 10)))
+)' readStream
 ]
 
 { #category : #tests }
@@ -68,13 +50,13 @@ FamixTypeScriptParameterizedTypeTest >> testArgumentTypes [
 	parameterizableClassA := (model entities select: [ :each | each name = 'ParameterizableClassA' ]) at: 1.
 	typeB := (model entities select: [ :each | each name = 'TypeB' ]) at: 1.
 	typeC := (model entities select: [ :each | each name = 'TypeC' ]) at: 1.
-	fmxEntity := model allAttributes entityNamed: #'ClassA.attributeA1'.
+	fmxEntity := model allAttributes entityNamed: #'ClassA.fieldA1'.
 	declaredType := fmxEntity declaredType.
 	self assert: declaredType equals: parameterizedTypeA.
 	self assert: declaredType parameterizableClass equals: parameterizableClassA.
 	self assert: declaredType arguments size equals: 1.
 	self assert: (declaredType arguments at: 1) equals: typeB.
-	fmxEntity := model allAttributes entityNamed: #'ClassA.attributeA2'.
+	fmxEntity := model allAttributes entityNamed: #'ClassA.fieldA2'.
 	declaredType := fmxEntity declaredType.
 	self assert: declaredType equals: parameterizedTypeB.
 	self assert: declaredType parameterizableClass equals: parameterizableClassA.
@@ -93,7 +75,7 @@ FamixTypeScriptParameterizedTypeTest >> testArgumentTypes [
 	self assert: declaredType parameterizableClass equals: parameterizableClassA.
 	self assert: declaredType arguments size equals: 1.
 	self assert: (declaredType arguments at: 1) equals: typeB.
-	fmxEntity := (fmxMethod localVariables select: [ :each | each name = 'localVariableMtdA1' ]) at: 1.
+	fmxEntity := (fmxMethod localVariables select: [ :each | each name = 'variableMtdA1' ]) at: 1.
 	declaredType := fmxEntity declaredType.
 	self assert: declaredType equals: parameterizedTypeA.
 	self assert: declaredType parameterizableClass equals: parameterizableClassA.
@@ -113,7 +95,7 @@ FamixTypeScriptParameterizedTypeTest >> testArgumentTypes [
 	self assert: declaredType arguments size equals: 2.
 	self assert: (declaredType arguments at: 1) equals: typeB.
 	self assert: (declaredType arguments at: 2) equals: typeC.
-	fmxEntity := (fmxMethod localVariables select: [ :each | each name = 'localVariableMtdA2' ]) at: 1.
+	fmxEntity := (fmxMethod localVariables select: [ :each | each name = 'variableMtdA2' ]) at: 1.
 	declaredType := fmxEntity declaredType.
 	self assert: declaredType equals: parameterizedTypeB.
 	self assert: declaredType parameterizableClass equals: parameterizableClassA.
@@ -148,7 +130,7 @@ FamixTypeScriptParameterizedTypeTest >> testArgumentsConstruction [
 { #category : #tests }
 FamixTypeScriptParameterizedTypeTest >> testModelSize [
 
-	self assert: model entities size equals: 18.
+	self assert: model entities size equals: 13.
 	self assert: model allParameterizedTypes size equals: 2
 ]
 

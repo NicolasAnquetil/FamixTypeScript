@@ -1,10 +1,10 @@
 Class {
 	#name : #FamixTypeScriptNamedEntity,
-	#superclass : #FamixTypeScriptEntity,
+	#superclass : #FamixTypeScriptSourcedEntity,
 	#traits : 'FamixTInvocationsReceiver + FamixTNamedEntity',
 	#classTraits : 'FamixTInvocationsReceiver classTrait + FamixTNamedEntity classTrait',
 	#instVars : [
-		'#decorator => FMMany type: #FamixTypeScriptDecorator opposite: #namedEntity'
+		'#decorators => FMMany type: #FamixTypeScriptDecorator opposite: #namedEntity'
 	],
 	#category : #'Famix-TypeScript-Entities-Entities'
 }
@@ -12,7 +12,7 @@ Class {
 { #category : #meta }
 FamixTypeScriptNamedEntity class >> annotation [
 
-	<FMClass: #NamedEntity super: #FamixTypeScriptEntity>
+	<FMClass: #NamedEntity super: #FamixTypeScriptSourcedEntity>
 	<package: #FamixTypeScript>
 	<generated>
 	<abstract>
@@ -29,21 +29,21 @@ FamixTypeScriptNamedEntity class >> isAbstract [
 { #category : #adding }
 FamixTypeScriptNamedEntity >> addDecorator: anObject [
 	<generated>
-	^ self decorator add: anObject
+	^ self decorators add: anObject
 ]
 
 { #category : #accessing }
-FamixTypeScriptNamedEntity >> decorator [
-	"Relation named: #decorator type: #FamixTypeScriptDecorator opposite: #namedEntity"
+FamixTypeScriptNamedEntity >> decorators [
+	"Relation named: #decorators type: #FamixTypeScriptDecorator opposite: #namedEntity"
 
 	<generated>
 	<derived>
-	^ decorator
+	^ decorators
 ]
 
 { #category : #accessing }
-FamixTypeScriptNamedEntity >> decorator: anObject [
+FamixTypeScriptNamedEntity >> decorators: anObject [
 
 	<generated>
-	decorator value: anObject
+	decorators value: anObject
 ]
